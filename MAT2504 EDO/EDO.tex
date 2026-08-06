@@ -1,0 +1,276 @@
+\documentclass{article}
+%packages
+\usepackage{fullpage}
+\usepackage{xspace}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{stmaryrd}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{stackrel}
+\usepackage[framemethod = TikZ]{mdframed}
+
+%theorems
+\newtheorem{theorem}{Teorema}[subsection]
+
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axioma}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Afirmación}
+\newtheorem{conclusion}{Conclusión}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}[theorem]{Conjetura}
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{lemma}[theorem]{Lema}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definición}
+
+\newtheorem{exercise}{Ejercicio}
+
+\newtheorem*{notation}{Notación}
+\newtheorem{problem}{Problema}[section]
+\newtheorem*{obs}{Observación}
+\newtheorem*{addendum}{Addendum}
+
+\newtheorem*{tarea}{\wea{Tarea}}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{solution}{\textbf{Solución}}
+\newtheorem{summary}{Summary}
+\newtheorem{example}[theorem]{\textbf{Ejemplo}}
+
+\numberwithin{equation}{section}
+
+\renewcommand*{\proofname}{\textbf{Demostración}}
+
+\surroundwithmdframed[
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  leftmargin=\parindent,
+  skipabove=\medskipamount,
+  skipbelow=\medskipamount
+]{proof}
+
+\surroundwithmdframed[
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  leftmargin=\parindent,
+  skipabove=\medskipamount,
+  skipbelow=\medskipamount
+]{solution}
+
+%commands
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Kcal}{\mathcal{K}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Tcal}{\mathcal{T}}
+\newcommand{\Ucal}{\mathcal{U}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Wcal}{\mathcal{W}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\Zcal}{\mathcal{Z}}
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\e}{\varepsilon}
+\renewcommand{\t}{\tau}
+\newcommand{\lam}{\lambda}
+\newcommand{\Lam}{\Lambda}
+
+\newcommand{\vphi}{\varphi}
+\newcommand{\oo}{\infty}
+\newcommand{\longto}{\longrightarrow}
+\newcommand{\embbed}{\hookrightarrow}
+\renewcommand{\bar}{\overline}
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\normal}{\unlhd}
+
+\renewcommand{\tilde}{\widetilde}
+\renewcommand{\hat}{\widehat}
+\newcommand{\del}{\partial}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\br}[1]{\left( #1 \right)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\cor}[1]{\left[ #1 \right]}
+\newcommand{\gen}[1]{\left\langle #1 \right\rangle}
+\newcommand{\matr}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\dv}[2]{\frac{\d#1}{\d#2}}
+
+% Por si me equivoco al escribir
+\newcommand{\rac}[2]{\frac{#1}{#2}}
+\newcommand{\olon}{\colon}
+\newcommand{\ubseteq}{\subseteq}
+\newcommand{\ubset}{\subset}
+\newcommand{\irc}{\circ}
+\renewcommand{\o}{\to}
+
+\newcommand{\ds}{\displaystyle}
+
+\renewcommand*\contentsname{Contenidos}
+
+\newcommand{\wea}[1]{\textcolor{BlueViolet}{\textbf{\emph{#1}}}}
+\newcommand{\fecha}[1]{\begin{flushright} \underline{#1} \end{flushright}}
+
+\newcommand{\dem}[1]{\textbf{Demostración (#1)}}
+
+
+\title{MAT2504 -- Ecuaciones Diferenciales Ordinarias}
+\author{Felipe Inostroza \\ Prof. Amal Taarabt}
+\date{Segundo Semestre 2026}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Introducción}
+\subsection{Generalidades y Definiciones}
+\fecha{Clase 1. Jueves 6 de Agosto}
+
+Las leyes y los fenómenos del universo están escritos en el lenguaje matemático, y uno de los principales problemas de los científicos antiguos fué el estudio de los movimientos planetarios.
+
+\begin{definition}
+    Una \wea{ecuación diferencial ordinaria} (\wea{EDO}) de \wea{orden $k$} es una relación funcional entre la variable real $t \in \R$, una función $t \mapsto y(t)$ y sus derivadas $y', y'', \dots, y^{(k)}$ en $t$, definida por
+    \[ F(t,y,y',y'',\dots,y^{(k)}) = 0, \tag{1} \]
+    donde $y \colon J \to \R^m$ y $J \ubset \R$ es un intervalo abierto y 
+    \[ F \colon J \times \R^m \times \dots \times \R^m \to \R^n \]
+    es una función dada ($F \colon J \times \R^{(k+1)m} \to \R^n$).
+    Generalmente $t$ se llama la \wea{variable independiente} e $y$ la \wea{variable dependiente}.
+\end{definition}
+
+\begin{example}\
+    \begin{itemize}
+        \item $f' + 2f = 10$ es una EDO, con la variable independiente dada implícitamente. La relación funcional es
+        \[ F(x,f,f') \mapsto f' + 2f - 10. \]
+        \item $f' + 2f = e^x \sin x$ es una EDO, con relación funcional
+        \[ F(x,f,f') \mapsto f' + 2f - e^x \sin x. \]
+    \end{itemize}
+\end{example}
+
+\begin{definition}
+    Si $F$ es una función a valores reales, la EDO se dice \wea{ecuación escalar}.
+\end{definition}
+
+\begin{obs}
+    En general $m = 1$, es decir $y \colon J \to \R$.
+\end{obs}
+
+\begin{example}
+    \
+    \begin{itemize}
+        \item $ty' + 5y^2 = 5t^3$.
+        \item $t^2 y'' - 2(y')^2 = 0$.
+    \end{itemize}
+\end{example}
+
+\begin{notation}
+$C^k(U,V)$ es el conjunto de las funciones $f \colon U \to V$ de clase $C^k$. Usamos también las notaciones
+\[ y^{(n)}(t) = \dv{^n y}{t^n}. \]
+\end{notation}
+
+\begin{definition}
+    Si $F$ no es independiente en $y^{(k)}$, entonces diremos que
+    \[ y^{(k)} = f(t,y,y',\dots,y^{(k-1)}) \]
+    es un sistema de $m \times m$ ecuaciones diferenciales ordinarias de orden $k$ con respecto a la función desconocida $y \colon J \to \R^m$ y  donde la función $f \colon J \times \R^{km} \to \R^m$. Escribimos
+    \[ y_i^{(k)} = f_i(t,y,y',y^{(k-1)}), \quad \forall i \in \{1,\dots,m\} \]
+    donde $y = (y_1,\dots,y_m)$ y $f = (f_1,\dots,f_m)$.
+\end{definition}
+
+\begin{example}
+    \[ ty + (1+t^2) y' + \sin t y'' = 0. \]
+    En este caso tenemos $F \colon (t,y,y',y'') \mapsto ty + (1+t^2) y' + \sin t y''$.
+    Si consideramos momentáneamente valores de $t$ tales que $\sin t \neq 0$, entonces podemos reescribir esta EDO de la forma
+    \[ y'' = - \frac{t}{\sin t} y - \frac{(1+t^2)}{\sin t} y'. \]
+    Si tomamos $\ds f \colon (x,y,y') \mapsto - \frac{t}{\sin t} y - \frac{(1+t^2)}{\sin t} y'$, entonces pasamos el sistema de la forma $F(t,y,y',y'') = 0$ a $y'' = f(t,y,y')$ (forma estándar).
+\end{example}
+
+\begin{obs}
+    \ \begin{itemize}
+        \item En una EDO, la función desconocida $y$ depende de una sola variable independiente.
+        \item Si la variable dependiente $y$ es una función de dos o más variables independientes, entonces aparecerán \wea{derivadas parciales} y hablaremos de EDP, ecuaciones a derivadas parciales. Por ejemplo, la temperatura $u(t,x)$ de una barra uniforme en el punto $x$ al tiempo $t$ satisface (junto con algunas condiciones adicionales) la siguiente EDP:
+        \[ \frac{\del u}{\del t} = k \frac{\del^2 u}{\del x^2}, \]
+        donde $k$ es la difusividad térmica de la barra (cst).
+    \end{itemize}
+\end{obs}
+
+\begin{notation}
+    Para derivadas parciales, escribimos
+    \[ \frac{\del f}{\del x} = \del_x f. \]
+\end{notation}
+
+\begin{definition}
+    Si $f \colon U \subset \R^n \to \R^m$, escribimos
+    \[ \d f = \del_{x_1} f \d x_1 + \dots \del_{x_n} f \d x_n. \]
+\end{definition}
+
+\subsection{Solución de una ecuación diferencial}
+
+Consideremos la EDO
+\[ 2 f'' + f + (x^2 + 1) f = 0. \]
+¿Cómo podemos resolverla? ¿Qué significa resolver una EDO? Queremos encontrar una función $f$ que satisfaga la relación funcional. También queremos saber en donde está definida, y claramente que sea de clase $C^2$ en su dominio.
+
+\begin{definition}
+    Una función $\phi \in C^k(I,\R^m)$ es \wea{solución} de la EDO (1) sobre $I \subseteq J$ si tenemos
+    \[ \forall t \in I, \quad F(t,\phi(t),\phi'(t), \dots, \phi^{(k)}(t)) = 0. \]
+    En este caso hablamos de una solución \wea{explícita}.
+\end{definition}
+
+\begin{example}
+    La función $y(x) = 7 e^x + x^2 + 2x + 2$ es una solución de la EDO $y' = y - x^2$ en $I = \R$, ya que efectivamente
+    \[ y'(x) = 7e^x + 2x + 2 = y(x) - 2. \]
+\end{example}
+
+\begin{definition}
+    Una EDO de orden $k$ se dice de \wea{forma canónica} (\wea{normal}) si se escribe de la forma
+    \[ y(k) = f(t,y,y',\dots,y^{(k-1)}), \tag{2} \]
+    donde $f \colon I \times \R^{km} \to \R^m$ e $I \subset J$.
+\end{definition}
+
+
+\end{document}
