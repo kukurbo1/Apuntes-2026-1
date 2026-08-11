@@ -138,6 +138,7 @@
 \newcommand{\gen}[1]{\left\langle #1 \right\rangle}
 \newcommand{\matr}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \newcommand{\dv}[2]{\frac{\d#1}{\d#2}}
+\newcommand{\pdv}[2]{\frac{\del#1}{\del#2}}
 
 % Por si me equivoco al escribir
 \newcommand{\rac}[2]{\frac{#1}{#2}}
@@ -171,7 +172,7 @@
 
 \section{Introducción}
 \subsection{Generalidades y Definiciones}
-\fecha{Clase 1. Jueves 6 de Agosto}
+\fecha{Clase 1. Jueves 6/8.}
 
 Las leyes y los fenómenos del universo están escritos en el lenguaje matemático, y uno de los principales problemas de los científicos antiguos fué el estudio de los movimientos planetarios.
 
@@ -272,5 +273,114 @@ Consideremos la EDO
     donde $f \colon I \times \R^{km} \to \R^m$ e $I \subset J$.
 \end{definition}
 
+\fecha{Clase 2. Martes 11/8.}
+
+\begin{obs}
+    No siempre se puede escribir una EDO de forma canónica.
+    \begin{itemize}
+        \item Puede ser localmente posible a través del Teorema de la Función Implícita.
+        \item $f$ puede ser que no sea definida como función. Por ejemplo considerando $(y')^2 - t = 0$.
+        \item La forma canónica es una propiedad que una EDO puede no tener.
+    \end{itemize}
+\end{obs}
+
+\begin{definition}
+    La ecuación (1) se llama \wea{lineal} si $$f \colon (t,x_1,x_2,\dots,x_n) \to f(t,x_1,x_2,\dots,x_n)$$ es una función afín con respecto a la variable $x = (x_1,x_2,\dots,x_n)$. Es decir,
+    \[ y^{(k)}(t) = \sum_{j=0}^{k-1} a_j(t) y^{(j)}(t) + g(t) \]
+    donde $a_j$ son funciones matrices $m \times m$ definidas en $J$ y $g \colon J \to \R^m$.
+    Si $g \equiv 0$, el sistema se dice \wea{homogeneo}.
+\end{definition}
+
+\begin{example}
+    $f(x_1,x_2) = x_1 + 2x_2 - x_1 x_2 - 100$ funciona, pero $g(x_1,x_2) = 2x_1 - \sin x_2$ no funciona.
+\end{example}
+
+\begin{obs}
+    En el caso de una EDO lineal, si escribimos $y = \matr{y_1 \\ \vdots \\ y_m}$, entonces
+    \begin{align*}
+        y^{(k)} &= f(t,y,y',\dots,y^{(k-1)}) \\
+        &= \sum_{j=0}^{k-1} a_j(t) y^{(j)}(t) + g(t) \\
+        &= \matr{a_0(t) & \cdots & a_{k-1}(t)} \matr{y(t) \\ y'(t) \\ \vdots \\ y^{(k-1)}(t)} + \matr{g_1(t) \\ g_2(t) \\ \vdots \\ g_{k-1}(t)}.
+    \end{align*}
+\end{obs}
+
+\begin{example}
+    \ \begin{itemize}
+        \item $y'' = 2y - 2t^2$.
+        \item $y'' = 2yt^2$.
+    \end{itemize}
+\end{example}
+
+\begin{example}
+    Un ejemplo de más de una EDO es
+    \[ \begin{cases}
+        y_1' = (2t^2 + 1) y_1 - y_2 - 1 \\
+        y_2' = ty_1 + 2y_2 - \sin t
+    \end{cases} \]
+    Escribimos $Y = \matr{y_1 \\ y_2}$, luego
+    \begin{align*}
+        Y' &= \matr{y_1' \\ y_2'} \\
+        &= \matr{(2t^2 + 1) y_1 - y_2 - 1 \\ ty_1 + 2y_2 - \sin t} \\
+        &= \matr{2 t^2 + 1 \\ t} y_1 + \matr{-1 \\ 2} y_2 + \matr{-1 \\ -\sin t} \\
+        &= \matr{2 t^2 + 1 & -1 \\ t & 2} \matr{y_1 \\y_2} + \matr{-1 \\ -\sin t} \\
+        &= \matr{2 t^2 + 1 & -1 \\ t & 2} Y + \matr{-1 \\ -\sin t} \\
+        &= A(t) Y(t) + g(t)
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Clasifique las siguientes EDOs si son lineales o no, especificando el orden.
+    \begin{enumerate}
+        \item $(x-t) \d t + 4t \d x = 0$.
+        \begin{solution}
+            Notemos primero (con el dolor de mi alma) que podemos escribir esta EDO de las siguientes formas:
+            \begin{align*}
+                (x-t) + 4t \dv xt = 0 \\
+                (x-t) + 4t x' = 0 \\
+                (x-t) + 4t \dot x = 0 \\
+                (x-t) \dv tx + 4t = 0.
+            \end{align*}
+            Si vemos $x = x(t)$, entonces es lineal. Si vemos $t = t(x)$, entonces no es lineal.
+        \end{solution}
+        \item $x'' - 2x' + x = 0$.
+        \item $(1 - y) y' - 2y = e^x$.
+        \item $\dv{^3 y}{t^3} + t \dv yt - 5y = e^t$.
+        \item $x^{(4)} + x^{(2)} = 0$.
+        \item $\dv{^2 x}{t^2} + \sin x = 0$.
+        \item $\del_x^2 u(x,y) + \del_y^2(x,y) = 0$.
+        \item $\begin{cases}
+            x'(t) = -y(t) \\ y'(t) = x(t).
+        \end{cases}$
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    $$\begin{cases}
+        y_1' = y_1 y_2 \\ y_2' = -6t
+    \end{cases}$$ Esta EDO es de orden $k = 1$, $y = (y_1, y_2)$, $f = (f_1, f_2)$ tal que $f_1(t,y_1,y_2) = y_1 y_2$ y $f_2(t,y_2,y_3) = -6t$. No es ni lineal ni homogenea.
+\end{example}
+
+\begin{example}
+    El sistema
+    \[ \begin{cases}
+        y_1'' = y_1 + y_2' \\ y_2'' = y_1' - ty_2 + 10 t \\ y_3'' = y_1 + y_2 + y_3 - \sin t
+    \end{cases} \]
+    es lineal. Si tomamos $Y = \matr{y_1 \\ y_2 \\ y_3}$, entonces
+    \[ Y'' = \matr{0&1&0 \\ 1&0&0 \\ 0&0&0} Y' + \matr{1&0&0 \\ 0&-t&0 \\ 1&1&1} Y + \matr{0 \\ 10t \\ -\sin t}. \]
+    No es homogenea.
+\end{example}
+
+\begin{example}
+    $y'' + 5y' + 6y = 0$ es una EDO escalar de orden 2 lineal y homogénea.
+    Las funciones $\vphi_1(t) = e^{-2t}$ y $\vphi_2(t) = e^{-3t}$ con soluciones para todo $t \in \R$. En particular la función $$\vphi(t) = c_1 \vphi_1(t) + c_2 \vphi_2(t)$$ es solución $\forall c_1, c_2 \in \R$ (\wea{principio de superposición}).
+\end{example}
+
+\begin{example}
+    La EDO $y' + y^2 = 0$ tiene solución real única definida en todo $\R$ dada por $y(t) = 0$ para todo $t \in \R$.
+\end{example}
+
+\begin{example}
+    ¿Qué pasa con $(y')^2 + y^2 = 0$?
+\end{example}
 
 \end{document}
