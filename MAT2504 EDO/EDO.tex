@@ -68,44 +68,11 @@
 ]{solution}
 
 %commands
-\newcommand{\A}{\mathcal{A}}
-\newcommand{\B}{\mathcal{B}}
 \newcommand{\C}{\mathbb{C}}
-\newcommand{\D}{\mathbb{D}}
-\newcommand{\F}{\mathbb{F}}
 \newcommand{\N}{\mathbb{N}}
-\renewcommand{\O}{\mathcal{O}}
-\renewcommand{\P}{\mathcal{P}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\renewcommand{\S}{\mathbb{S}}
-\newcommand{\U}{\mathcal{U}}
 \newcommand{\Z}{\mathbb{Z}}
-
-\newcommand{\Acal}{\mathcal{A}}
-\newcommand{\Bcal}{\mathcal{B}}
-\newcommand{\Ccal}{\mathcal{C}}
-\newcommand{\Dcal}{\mathcal{D}}
-\newcommand{\Ecal}{\mathcal{E}}
-\newcommand{\Fcal}{\mathcal{F}}
-\newcommand{\Gcal}{\mathcal{G}}
-\newcommand{\Hcal}{\mathcal{H}}
-\newcommand{\Ical}{\mathcal{I}}
-\newcommand{\Jcal}{\mathcal{J}}
-\newcommand{\Kcal}{\mathcal{K}}
-\newcommand{\Lcal}{\mathcal{L}}
-\newcommand{\Mcal}{\mathcal{M}}
-\newcommand{\Ncal}{\mathcal{N}}
-\newcommand{\Qcal}{\mathcal{Q}}
-\newcommand{\Rcal}{\mathcal{R}}
-\newcommand{\Scal}{\mathcal{S}}
-\newcommand{\Tcal}{\mathcal{T}}
-\newcommand{\Ucal}{\mathcal{U}}
-\newcommand{\Vcal}{\mathcal{V}}
-\newcommand{\Wcal}{\mathcal{W}}
-\newcommand{\Xcal}{\mathcal{X}}
-\newcommand{\Ycal}{\mathcal{Y}}
-\newcommand{\Zcal}{\mathcal{Z}}
 
 \renewcommand{\a}{\alpha}
 \renewcommand{\b}{\beta}
@@ -118,13 +85,7 @@
 \newcommand{\vphi}{\varphi}
 \newcommand{\oo}{\infty}
 \newcommand{\longto}{\longrightarrow}
-\newcommand{\embbed}{\hookrightarrow}
 \renewcommand{\bar}{\overline}
-
-\newcommand{\id}{\operatorname{id}}
-\newcommand{\im}{\operatorname{im}}
-
-\newcommand{\normal}{\unlhd}
 
 \renewcommand{\tilde}{\widetilde}
 \renewcommand{\hat}{\widehat}
@@ -139,14 +100,6 @@
 \newcommand{\matr}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \newcommand{\dv}[2]{\frac{\d#1}{\d#2}}
 \newcommand{\pdv}[2]{\frac{\del#1}{\del#2}}
-
-% Por si me equivoco al escribir
-\newcommand{\rac}[2]{\frac{#1}{#2}}
-\newcommand{\olon}{\colon}
-\newcommand{\ubseteq}{\subseteq}
-\newcommand{\ubset}{\subset}
-\newcommand{\irc}{\circ}
-\renewcommand{\o}{\to}
 
 \newcommand{\ds}{\displaystyle}
 
@@ -179,7 +132,7 @@ Las leyes y los fenómenos del universo están escritos en el lenguaje matemáti
 \begin{definition}
     Una \wea{ecuación diferencial ordinaria} (\wea{EDO}) de \wea{orden $k$} es una relación funcional entre la variable real $t \in \R$, una función $t \mapsto y(t)$ y sus derivadas $y', y'', \dots, y^{(k)}$ en $t$, definida por
     \[ F(t,y,y',y'',\dots,y^{(k)}) = 0, \tag{1} \]
-    donde $y \colon J \to \R^m$ y $J \ubset \R$ es un intervalo abierto y 
+    donde $y \colon J \to \R^m$ y $J \subset \R$ es un intervalo abierto y 
     \[ F \colon J \times \R^m \times \dots \times \R^m \to \R^n \]
     es una función dada ($F \colon J \times \R^{(k+1)m} \to \R^n$).
     Generalmente $t$ se llama la \wea{variable independiente} e $y$ la \wea{variable dependiente}.
@@ -375,12 +328,116 @@ Consideremos la EDO
     Las funciones $\vphi_1(t) = e^{-2t}$ y $\vphi_2(t) = e^{-3t}$ con soluciones para todo $t \in \R$. En particular la función $$\vphi(t) = c_1 \vphi_1(t) + c_2 \vphi_2(t)$$ es solución $\forall c_1, c_2 \in \R$ (\wea{principio de superposición}).
 \end{example}
 
+\fecha{Clase 3. Jueves 13/8}
+
 \begin{example}
     La EDO $y' + y^2 = 0$ tiene solución real única definida en todo $\R$ dada por $y(t) = 0$ para todo $t \in \R$.
+
+    Para todo $t \in \R$ tenemos que $y' = - y^2 \leq 0$. Afirmamos que cualquier solución no nula debe explotar en tiempo finito. Supongamos que $y(t_0) \neq 0$ para algún $t_0$, y supongamos que existe $t_1 > t_0$ tal que $y(t_1) = 0$ (¿por que?). %% por que???
+    Entonces $y$ mantiene el signo de $y(t_0)$ sobre $[t_0,t_1)$ y por lo tanto $y(t) \neq 0$ para todo $t \in [t_0,t_1)$. Por otra parte, notemos que $1/y$ es estrictamente creciente tal que $1/y(t) \to \oo$ cuando $t \to t_1$, y notemos que
+    \[ 1 = \frac{y'}{y'} = \frac{y'}{-y^2} = \br{\frac{1}{y}}' \]
+    y por TFC-1
+    \[ \frac{1}{y(t)} = \frac{1}{y(t_0)} + \int_{t_0}^t 1 \,\d s = \frac{1}{y_(t_0)} + t - t_0 \]
+    y para $t \to t_1^-$ se tiene que $1/y(t) \to 1/y(t_0) + t_1 - t_0 < +\oo$. \(\to\gets\)
 \end{example}
 
 \begin{example}
-    ¿Qué pasa con $(y')^2 + y^2 = 0$?
+    ¿Qué pasa con $(y')^2 + y^2 = 0$? En este caso $0 \leq (y')^2 = - y^2 \leq 0$, por lo que $y \equiv 0$ es la única solución real. Sin embargo, tiene soluciones complejas $\vphi(t) = c e^{\pm it}$ para $c \in \C$ constante.
 \end{example}
+
+\begin{example}
+    La ecuación $(y')^2 + y^2 = -1$ no tiene soluciones reales. Tenemos soluciones complejas
+    \[ \vphi_1(t) = i \cos t, \quad \vphi_2(t) = i \sin{t}. \]
+\end{example}
+
+\begin{definition}
+    Una EDO de orden $k$ se dice \wea{autónoma} si
+    \[ y^{(k)} = f(y,y',\dots,y^{(k-1)}). \]
+    i.e.: si $f$ no depende explícitamente de $t$.
+\end{definition}
+
+\begin{example}
+    $y'(t) = t^2 \sin(y(t))$ no es autónoma.
+\end{example}
+
+\begin{example}
+    $y'(t) = \sin(y(t))$ es autónoma.
+\end{example}
+
+\begin{exercise}
+    [Invarianza]
+    Si la función
+    \begin{align*}
+        \phi \colon I &\to U \\
+        t &\mapsto \phi(t)
+    \end{align*}
+    es solución de la ecuación autónoma $y' = f(y)$ en un intervalo abierto $I \subseteq \R$, entonces
+    \begin{align*}
+        \psi_a \colon I + a &\to U \\
+        t &\mapsto \phi(t-a)
+    \end{align*}
+    para $a \in \R$ es también solución de $y' = f(y)$.
+\end{exercise}
+\begin{proof}
+    Sea $\psi_a(t) = \phi(t-a)$, entonces
+    \[ \psi_a'(t) = \dv{}{t} \phi(t-a) = \phi'(t-a) \cdot \dv{}{t} (t-a) = \phi'(t-a). \]
+    Notemos que para todo $t \in I+a$ tenemos que $t-a \in I$, y como $\phi$ es solución de la EDO en $I$, tenemos que
+    \[ \psi'(t) = \phi'(t-a) = f(\phi(t-a)) = f(\psi(t)). \]
+    Luego $\psi$ es solución de la EDO en el intervalo $I+a$.
+\end{proof}
+
+\begin{obs}
+    Si $y' = f(t,y)$ y $\psi(t) = \phi(t-a)$, entonces
+    \[ \psi'(t) = f(t-a,\psi(t)) \]
+    que no coincide generalmente con $f(t,\psi(t))$.
+\end{obs}
+
+\begin{obs}
+    Toda ecuación diferencial se puede reducir a una ecuación diferencial autónoma. Si
+    \begin{align*}
+        y \colon I &\to \R^m \\ 
+        t  &\mapsto y(t) 
+    \end{align*}
+    es solución de $y' = f(t,y)$ con condición inicial $(t_0,y_0)$ (i.e.: $y_0 = y(t_0)$), entonces
+    \begin{align*}
+        x \colon I &\to \R \times \R^m \\ 
+        t &\mapsto (t,y(t))
+    \end{align*}
+    es solución de %% Completar con el beamer
+\end{obs}
+
+\newpage
+\subsection{No vi el título de esta sección}
+
+\begin{definition}
+    Sean $J \subset \R$ un intervalo abierto y $U \subset \R^m$ abierto. Sea $f \colon J \times U \to \R^m$ una aplicación continua. Una \wea{solución} de la ecuación diferencial
+    \[ x' = f(t,x) \]
+    es una aplicación $x \colon I \subset J \to \R^m$ de clase $C^1$ tal que
+    \[ \forall t \in I, \quad x'(t) = f(t,x(t)). \]
+    Una aplicación $f \colon J \times U \to \R^m$ se llama también un \wea{campo de vectores} donde
+    \begin{itemize}
+        \item la variable $t \in J$ corresponde al \wea{tiempo},
+        \item la variable $x \in U$ corresponde a la \wea{posición}.
+    \end{itemize}
+\end{definition}
+
+En cada instante $t \in J$ y en cada punto $x \in U$, tenemos un vector $f(t,x) \in \R^m$. Podemos imaginar que el vector $f(t,x) \in \R^m$ indique el viento (velocidad de dirección) al instante $t$ en el punto $x$. Resolver la ED
+\[ x' = f(t,x) \]
+es determinar el comportamiento $t \mapsto x(t)$ de una partícula transportada por el viento y cuyo vector velocidad en cada instante $t$ es dado por $x'(t) = f(t,x(t))$.
+
+La \wea{trayectoria} de la EDO es el conjunto
+\[ \{\} \] %% Rellenar con el beamer
+
+\begin{exercise}
+    Dibujar los campos direccionales de las siguientes EDOs:
+    \begin{enumerate}
+        \item $y' = 1+y$
+        \item $y' = 1 + |y|$.
+    \end{enumerate}
+\end{exercise}
+
+\subsection{Reducción de orden}
+
+
 
 \end{document}
